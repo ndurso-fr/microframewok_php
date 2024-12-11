@@ -1,0 +1,42 @@
+PHP a un serveur intégré :
+
+php -S 127.0.0.1:8000
+
+------------------------------------
+
+
+/mon-projet
+├── /app
+│   ├── /Controllers
+│   │   ├── HomeController.php
+│   │   ├── AboutController.php
+│   ├── /Views
+│   │   ├── home.php
+│   │   ├── about.php
+├── /public
+│   ├── index.php
+│   ├── router.php
+├── /core
+│   ├── Router.php
+│   ├── Controller.php
+
+----------------------------------------
+
+
+AJOUTER TWIG POUR LES VUES
+
+AJOUTER WEBPACK
+
+SOLUTION fichier static non servi par php -S
+
+GESTION ERREURS DE ROUTES
+
+AUTOLOAD PERSO
+
+=> utiliser celui de composer
+
+=> Ajoutons la prise en charge des méthodes HTTP POST, PUT, et DELETE
+
+Middleware (Qu'est-ce qu'un middleware ?)
+Je choisis Parsedown (Côté serveur)
+permissions (quelle permission faut-il ?)
