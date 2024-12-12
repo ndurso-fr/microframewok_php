@@ -34,6 +34,21 @@ class Router
 
     }
 
+    public function post($uri, $action): void
+    {
+        $this->routes['POST'][$uri] = $action;
+    }
+
+    public function put($uri, $action): void
+    {
+        $this->routes['PUT'][$uri] = $action;
+    }
+
+    public function delete($uri, $action): void
+    {
+        $this->routes['DELETE'][$uri] = $action;
+    }
+
 
     /**
      * @throws SyntaxError
@@ -69,10 +84,23 @@ class Router
 
     // avec la nouvelle syntaxe des actions ([Controller::class, 'method']
     // public/index.php : "$router->get('/', [HomeController::class, 'index']);"
+
+
     public function run(): void
     {
+
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+        // Ajout du bloc de débogage
+        // http://127.0.0.1:8000/resourceController/
+        /*echo "<pre>";
+        var_dump($this->routes); // Vérifie les routes enregistrées
+        var_dump($method);       // Vérifie la méthode HTTP (GET, POST, etc.)
+        var_dump($uri);          // Vérifie l'URI demandée
+        echo "</pre>";
+        exit;
+*/
 
         // Vérifie si la route existe pour la méthode HTTP et l'URI
         if (!isset($this->routes[$method][$uri])) {
@@ -95,6 +123,9 @@ class Router
 
         // Vérifie si la classe existe
         if (class_exists($controllerName)) {
+            echo "<pre>";
+            var_dump($controllerName);// string(30) "app\Controllers\HomeController"
+            echo "</pre>";
             $controller = new $controllerName();
 
             // Vérifie si la méthode existe dans le contrôleur
@@ -107,9 +138,14 @@ class Router
                 echo "Méthode '$methodName' non trouvée dans la classe '$controllerName'.";
             }
         } else {
+            echo "<pre>";
+            var_dump($controllerName);//string(34) "App\Controllers\ResourceController"
+            echo "</pre>";
+
             // Si la classe du contrôleur n'existe pas
             http_response_code(404);
-            echo "Classe '$controllerName' non trouvée.";
+
+            echo "Classe : '$controllerName' non trouvée.";
         }
     }
 

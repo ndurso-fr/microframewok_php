@@ -1664,7 +1664,11 @@ php -S 127.0.0.1:8000 public/router.php
 Navigue vers http://127.0.0.1:8000 pour tester les routes définies. Par exemple :
 / doit afficher "Bienvenue sur la page d'accueil !".
 /about doit afficher une erreur si le contrôleur AboutController n'existe pas encore.
+
+
 Étape 6 : Améliorer avec Composer (optionnel)
+
+
 Pour une solution encore plus robuste et standardisée, tu peux utiliser Composer pour l’autoload :
 
 Créer un fichier composer.json : Dans la racine du projet, exécute :
@@ -1715,6 +1719,8 @@ ChatGPT
 Ajoutons la prise en charge des méthodes HTTP POST, PUT, et DELETE dans ton micro-framework PHP. Cela nécessite d'étendre le routeur pour gérer ces méthodes et d'ajouter un système qui capture correctement leurs données.
 
 Étape 1 : Modifier le routeur pour gérer toutes les méthodes HTTP
+
+
 Actuellement, le routeur ne gère que les requêtes GET. Ajoutons la gestion des méthodes POST, PUT, et DELETE.
 
 Mise à jour de core/Router.php :
@@ -1877,23 +1883,20 @@ curl -X DELETE -d "id=123" http://127.0.0.1:8000/delete
 Le micro-framework prend maintenant en charge les méthodes POST, PUT et DELETE ! 🎉
 Si besoin, on peut encore ajouter :
 
+
+***************************************************
+    AJOUT D'UN MIDDLEWARE
+
 Un middleware pour valider les données.
 Un système centralisé pour gérer les réponses JSON.
+***************************************************
 
 
-
-
-
-Vous avez dit :
-Qu'est-ce qu'un middleware ? Oui ajoutons cela, middleware et un système centralisé pour gérer les réponses JSON.
-ChatGPT
-
-Réflexion pendant quelques secondes
-Bien sûr ! Ajoutons un middleware à ton micro-framework PHP et mettons en place un système centralisé pour gérer les réponses JSON. Cela améliorera la modularité, la sécurité et la flexibilité de ton application.
 
 1. Comprendre les Middlewares
 Qu'est-ce qu'un Middleware ?
-Un middleware est un composant logiciel qui s'intercale dans la chaîne de traitement des requêtes HTTP avant d'atteindre le contrôleur final. Il peut effectuer diverses tâches telles que :
+Un middleware est un composant logiciel qui s'intercale dans la chaîne de traitement des requêtes HTTP avant d'atteindre le contrôleur final.
+Il peut effectuer diverses tâches telles que :
 
 Authentification et autorisation : Vérifier si l'utilisateur est connecté ou a les permissions nécessaires.
 Validation des données : Valider les entrées de l'utilisateur.

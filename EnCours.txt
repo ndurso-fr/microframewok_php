@@ -33,10 +33,25 @@ GESTION ERREURS DE ROUTES
 
 AUTOLOAD PERSO
 
-=> utiliser celui de composer
+=> utiliser celui de composer (non fait)
 
-=> Ajoutons la prise en charge des méthodes HTTP POST, PUT, et DELETE
+AJOUT HTTP POST, PUT, et DELETE
 
 Middleware (Qu'est-ce qu'un middleware ?)
+
+
+
 Je choisis Parsedown (Côté serveur)
 permissions (quelle permission faut-il ?)
+
+
+
+
+
+
+
+
+
+
+
+

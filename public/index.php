@@ -31,7 +31,7 @@ require_once __DIR__ . '/../core/Router.php'; // classe Router() y est crée
 require_once __DIR__ . '/../core/Controller.php';*/
 
 
-
+use app\Controllers\ResourceController;
 use core\Router;
 use app\Controllers\AboutController;
 use app\Controllers\HomeController;
@@ -58,7 +58,15 @@ try {
     //$router->get('/about', 'AboutController@about');
     // Routes définies avec les contrôleurs utilisant les namespaces complets
     $router->get('/', [HomeController::class, 'index']);
-    $router->get('/about', [AboutController::class, 'about']);
+    $router->get('/about', [AboutController::class, 'index']);
+
+    $router->get('/resourceController', [ResourceController::class, 'index']);
+    $router->get('/resourceController/create', [ResourceController::class, 'create']);
+    $router->post('/resourceController/store', [ResourceController::class, 'store']);
+    $router->put('/resourceController/update', [ResourceController::class, 'update']);
+    $router->delete('/resourceController/delete', [ResourceController::class, 'delete']);
+
+
 
     // Démarre l'application
     $router->run();
